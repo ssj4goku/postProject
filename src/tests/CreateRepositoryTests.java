@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class CreateRepositoryTests {
 
     private static final String baseUrl = "https://api.github.com";
-    private static final String securityToken = "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";
+    private static final String securityToken = "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";
     private static final String apiEndpoint = "/user/repos";
     private static RequestSpecification requestSpecification;
 
@@ -73,9 +73,9 @@ public class CreateRepositoryTests {
                 spec(requestSpecification).
                 header("X-GitHub-Api-Version", "2052-11-28").
                 body(Payloads.addNewRepository(repositoryName)).
-                when().
+        when().
                 post(apiEndpoint).
-                then().
+        then().
                 statusCode(400).
                 body("message", equalTo("Bad Request")).
                 body("documentation_url", equalTo("https://docs.github.com/rest"));
@@ -88,9 +88,9 @@ public class CreateRepositoryTests {
         given().
                 spec(requestSpecification).
                 body("{}").
-                when().
+        when().
                 post(apiEndpoint).
-                then().
+        then().
                 statusCode(422).
                 body("message", equalTo("Repository creation failed."));
     }
